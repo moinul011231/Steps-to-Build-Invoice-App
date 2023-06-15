@@ -64,7 +64,19 @@ namespace InvoiceApp1
                         productNames.Add(productName);
                         quantities.Add(quantity);
                     }
+                    Console.WriteLine("Do you want to add more products? (Y/N) ");
+                    string answer = Console.ReadLine();
+
+                    if (answer != "Y")
+                    {
+                        break;
+                    }
+
+                    Console.WriteLine("Enter the product name: ");
+                    productName = Console.ReadLine();
                 }
+
+            }
 
             }
 
