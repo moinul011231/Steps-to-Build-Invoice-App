@@ -21,7 +21,7 @@ namespace InvoiceApp1
                 new Product("Product C", 20),
                 new Product("Product D", 25),
                 new Product("Product E", 30),
-                new Product("Product F", 35)
+                new Product("Product F", 35),
             };
 
             Console.ReadLine();
