@@ -75,6 +75,11 @@ namespace InvoiceApp1
                     Console.WriteLine("Enter the product name: ");
                     productName = Console.ReadLine();
                 }
+                  if (quantity > totalProducts - productNames.Count)
+                 {
+                    Console.WriteLine("You have already selected all the products.");
+                    break;
+                 }
 
             }
 
