@@ -83,7 +83,70 @@ namespace InvoiceApp1
                         var productList = products.Where(p => productNames.Contains(p.Name))
                         .ToDictionary(p => p.Name, p => quantities[productNames.IndexOf(p.Name)]);
 
-            }
+                Console.WriteLine("Enter your first name: ");
+                string firstName = Console.ReadLine();
+                Console.WriteLine("Enter your last name: ");
+                string lastName = Console.ReadLine();
+                Console.WriteLine("Enter your email address: ");
+                string email = Console.ReadLine();
+                Console.WriteLine("Enter your address: ");
+                string address = Console.ReadLine();
+                Console.WriteLine("Enter your date of birth (YYYY-MM-DD): ");
+                string dateOfBirth = Console.ReadLine();
+
+                // Validate each piece of information
+                if (firstName == null || firstName.Length == 0)
+                {
+                    throw new ArgumentException("First name cannot be empty.");
+                }
+                if (lastName == null || lastName.Length == 0)
+                {
+                    throw new ArgumentException("Last name cannot be empty.");
+                }
+                if (!System.Net.MailAddress.TryParse(email, out var mailAddress))
+                {
+                    throw new ArgumentException("Invalid email address.");
+                }
+                if (address == null || address.Length == 0)
+                {
+                    throw new ArgumentException("Address cannot be empty.");
+                }
+                Console.Write("Date of Birth (YYYY-MM-DD): ");
+                string dateOfBirthString = Console.ReadLine();
+                DateTime dateOfBirth;
+                if (!DateTime.TryParse(dateOfBirthString, out dateOfBirth))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Invalid date format. Please enter a valid date.");
+                    Console.ResetColor();
+                    return;
+                }
+                double total = 0;
+                Console.WriteLine("===== Invoice =====");
+                Console.WriteLine("Product\t\t\tQuantity\tPrice");
+
+                foreach (var selection in selectedProducts)
+                {
+                    double price = selection.Product.Price;
+                    int quantity = selection.Quantity;
+                    double totalPrice = price * quantity;
+
+                    total += totalPrice;
+
+                    Console.WriteLine($"{selection.Product.Name}\t\t{quantity}\t\t${totalPrice}");
+                }
+
+                double vat = total * 0.02;
+                double totalWithVat = total + vat;
+
+                Console.WriteLine("==============================");
+                Console.WriteLine($"Total (before VAT): ${total}");
+                Console.WriteLine($"VAT (2%): ${vat}");
+                Console.WriteLine($"Total with VAT: ${totalWithVat}");
+
+                Console.WriteLine("Would you like to receive the invoice via email? (yes/no)");
+                string emailChoice = Console.ReadLine();
+            } 
 
             }
 
