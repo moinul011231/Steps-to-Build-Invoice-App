@@ -25,16 +25,34 @@ namespace InvoiceApp1
             };
             foreach (var product in products)
             {
-                Console.WriteLine("{0} Price({1})tk Instock({2}Kg)", product.Name, product.Price , product.InStock);
+                Console.WriteLine("{0} Price({1})tk Instock({2}Kg)", product.Name, product.Price, product.InStock);
             }
-            Console.WriteLine(); 
+            Console.WriteLine();
+            var productNames = new List<string>();
+            var quantities = new List<int>();
 
+            Console.WriteLine("Enter the product name: ");
+            string productName = Console.ReadLine();
+
+            while (productName != "")
+            {
+                // Validate the product name
+                if (!products.Any(p => p.Name == productName))
+                {
+                    Console.WriteLine("Invalid product name. Please enter one of the following product names:");
+                    foreach (var product in products)
+                    {
+                        Console.WriteLine(product.Name);
+                    }
+                }
+
+
+
+
+            }
 
 
 
         }
-
-
-
     }
 }
