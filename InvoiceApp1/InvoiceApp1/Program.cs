@@ -45,9 +45,26 @@ namespace InvoiceApp1
                         Console.WriteLine(product.Name);
                     }
                 }
+                else
+                {
+                    // Get the product information
+                    var product = products.Where(p => p.Name == productName).First();
 
 
+                    Console.WriteLine("Enter the quantity: ");
+                    int quantity = int.Parse(Console.ReadLine());
 
+
+                    if (quantity > product.InStock)
+                    {
+                        Console.WriteLine("The product is out of stock.");
+                    }
+                    else
+                    {
+                        productNames.Add(productName);
+                        quantities.Add(quantity);
+                    }
+                }
 
             }
 
@@ -55,5 +72,10 @@ namespace InvoiceApp1
 
 
         }
-    }
+
+
+
+
+     }
+    
 }
