@@ -15,29 +15,26 @@ namespace InvoiceApp1
             //2nd 
             Invoiceapp.PrintTitle("Available Products");
             var products = new[]
-           {
-                new { Name = "Product 1", Price = 15 },
-                new { Name = "Product 2", Price = 15 },
-                new { Name = "Product 3", Price = 20 },
-                new { Name = "Product 4", Price = 25 },
-                new { Name = "Product 5", Price = 30 },
-                new { Name = "Product 6", Price = 35 },
+            {
+                new { Name = "Cucumber", Price = 20, InStock = 10 },
+                new { Name = "Fish", Price = 100, InStock = 15 },
+                new { Name = "Papaya", Price = 30, InStock = 5 },
+                new { Name = "Kiwifruit", Price = 150, InStock = 7 },
+                new { Name = "Watermelon", Price = 200, InStock = 5 },
+                new { Name = "Ladyfinger", Price = 50, InStock = 10 },
             };
-
             foreach (var product in products)
             {
-                Console.WriteLine("{0} ({1})", product.Name, product.Price);
+                Console.WriteLine("{0} Price({1})tk Instock({2}Kg)", product.Name, product.Price , product.InStock);
             }
-            Console.WriteLine();
-            var productNames = new List<string>();
-            var quantities = new List<int>();
+            Console.WriteLine(); 
 
-            while (true)
-            {
-                Console.WriteLine("Enter the product name: ");
-                var productName = Console.ReadLine();
-            }
+
+
+
         }
 
-    }   
+
+
+    }
 }
