@@ -80,6 +80,8 @@ namespace InvoiceApp1
                     Console.WriteLine("You have already selected all the products.");
                     break;
                  }
+                        var productList = products.Where(p => productNames.Contains(p.Name))
+                        .ToDictionary(p => p.Name, p => quantities[productNames.IndexOf(p.Name)]);
 
             }
 
