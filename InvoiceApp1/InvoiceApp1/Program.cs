@@ -14,17 +14,22 @@ namespace InvoiceApp1
 
             //2nd 
             Invoiceapp.PrintTitle("Available Products");
-            List<Product> products = new List<Product>
-            {
-                new Product("Product A", 15),
-                new Product("Product B", 15),
-                new Product("Product C", 20),
-                new Product("Product D", 25),
-                new Product("Product E", 30),
-                new Product("Product F", 35),
+            var products = new[]
+           {
+                new { Name = "Product 1", Price = 10 },
+                new { Name = "Product 2", Price = 20 },
+                new { Name = "Product 3", Price = 30 },
+                new { Name = "Product 4", Price = 40 },
+                new { Name = "Product 5", Price = 50 },
+                new { Name = "Product 6", Price = 60 },
             };
 
-            Console.ReadLine();
+            foreach (var product in products)
+            {
+                Console.WriteLine("{0} ({1})", product.Name, product.Price);
+            }
+            Console.WriteLine();
+
         }
     }
 }
