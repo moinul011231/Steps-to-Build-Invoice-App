@@ -121,19 +121,62 @@ namespace InvoiceApp1
                     Console.ResetColor();
                     return;
                 }
+                bool IsValidEmail(string email)
+                {
+                    const string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                    return System.Text.RegularExpressions.Regex.IsMatch(email, pattern);
+                }
+                double total = 0;
+                Console.WriteLine("===== Invoice =====");
+                Console.WriteLine("Product\t\t\tQuantity\tPrice");
 
+                foreach (var selection in selectedProducts)
+                {
+                    double price = selection.Product.Price;
+                    int quantity = selection.Quantity;
+                    double totalPrice = price * quantity;
+
+                    total += totalPrice;
+
+                    Console.WriteLine($"{selection.Product.Name}\t\t{quantity}\t\t${totalPrice}");
+                }
+
+                double vat = total * 0.02;
+                double totalWithVat = total + vat;
+
+                Console.WriteLine("==============================");
+                Console.WriteLine($"Total (before VAT): ${total}");
+                Console.WriteLine($"VAT (2%): ${vat}");
+                Console.WriteLine($"Total with VAT: ${totalWithVat}");
+
+                Console.WriteLine("Would you like to receive the invoice via email? (yes/no)");
+                string emailChoice = Console.ReadLine();
+
+                if (emailChoice.ToLower() == "yes")
+                {
+                    Console.WriteLine("Your invoice has been sent to your email.");
+                }
+                else
+                {
+                    Console.WriteLine("Thank you!");
+                }
+
+                Console.ReadLine();
             }
-
-            }
-
-
-
-
         }
 
+       if (answer.ToLower() == "yes")
+            {
+                Console.WriteLine("Your invoice has been sent to your email.");
+            }
+            else
+            {
+                Console.WriteLine("Thank you for using our app!");
+            }
 
+Console.ReadLine();
+    }
+} 
 
+            
 
-     }
-    
-}
