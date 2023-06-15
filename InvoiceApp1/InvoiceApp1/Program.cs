@@ -36,7 +36,7 @@ namespace InvoiceApp1
 
             while (productName != "")
             {
-                // Validate the product name
+
                 if (!products.Any(p => p.Name == productName))
                 {
                     Console.WriteLine("Invalid product name. Please enter one of the following product names:");
@@ -50,6 +50,7 @@ namespace InvoiceApp1
 
 
             }
+
 
 
 
